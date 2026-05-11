@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elsie Thomas</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green-dark: #337357;
+  --green-mid: #6D9F71;
+  --pink-light: #FFDBE5;
+  --pink-mid: #EA9AB2;
+  --white: #fafaf8;
+  --text: #1c2320;
+  --text-muted: #5a6b60;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--white); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 4rem;
+  background: rgb(252 234 238);
+  backdrop-filter: blur(14px);
+}
+
+em {
+  color:#337357;
+}
+
+.myimg {
+  width: 250px;
+  padding-top: 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green-dark); }
+
+/* HERO */
+#hero {
+  min-height: 100vh; display: grid; grid-template-columns: 2fr 1fr;
+  background: var(--white); position: relative; overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 8rem 5rem;
+}
+.hero-right {
+  background:#6D9F71;
+  display: flex; align-items: flex-end;
+  padding: 4rem 3rem;
+  position: relative; overflow: hidden;
+}
+.hero-eyebrow {
+  font-size: 1rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--green-mid); font-weight: 600; margin-bottom: 1.8rem;
+}
+.hero-name {
+  font-family: var(--serif); font-size: clamp(3.8rem, 6.5vw, 6rem);
+  font-weight: 400; letter-spacing: 0.1em; line-height: 1.0; color: var(--text); margin-bottom: 2rem; text-transform: uppercase;
+}
+.hero-name em { color: var(--green-dark); }
+.hero-tagline {
+  font-size: 0.92rem; color: var(--text-muted); font-weight: 400;
+  line-height: 1.85; max-width: 340px; margin-bottom: 3rem;
+  border-left: 5px solid var(--pink-mid); padding-left: 1.25rem;
+}
+.hero-actions { display: flex; gap: 0.75rem; }
+.btn {
+  font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-family: var(--sans); font-weight: 600; text-decoration: none;
+  padding: 0.85rem 1.8rem; cursor: pointer; transition: all 0.2s; display: inline-block; border: 1.5px solid;
+}
+.btn-fill { background: var(--green-dark); color: var(--white); border-color: var(--green-dark); }
+.btn-fill:hover { background: var(--green-mid); border-color: var(--green-mid); }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--text-muted); }
+.btn-ghost:hover { border-color: var(--green-dark); color: var(--green-dark); }
+.hero-watermark {
+  position: absolute; right: -1rem; top: 50%; transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl; font-family: var(--serif); font-size: 7rem;
+  font-weight: 400; color: rgba(51,115,87,0.08);
+  line-height: 1; user-select: none; pointer-events: none;
+}
+.hero-badge {
+  background: var(--white); padding: 1.1rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.25rem;
+}
+.hero-badge-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-mid); font-weight: 500; }
+.hero-badge-value { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--text); }
+
+/* ABOUT */
+#about { border-top: 1px solid var(--pink-light); border-bottom: 1px solid var(--pink-light); background: var(--white); }
+.about-inner {
+  max-width: 1100px; margin: 0 auto; padding: 7rem 4rem;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start;
+}
+.about-label { font-size: 3rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 0.6rem; }
+.about-num { font-family: var(--serif); font-size: 5rem; font-weight: 300; color: var(--pink-light); line-height: 1; }
+.about-heading { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; color: var(--text); margin-bottom: 1.5rem; line-height: 1.2; }
+.about-heading em { color: var(--green-dark); }
+.about-text { font-size: 1rem; line-height: 1.9; color: var(--text-muted); font-weight: 300; margin-bottom: 1.1rem; }
+.skills-section { margin-top: 2.5rem; }
+.skills-cat-label { font-size: .85rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dark); font-weight: 500; margin-bottom: 0.5rem; margin-top: 1.1rem; }
+.skills-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-chip { font-size: 0.8rem; padding: 0.3rem 0.85rem; border: 1px solid var(--green-mid); color: var(--green-dark); background: transparent; font-weight: 300; letter-spacing: 0.03em; }
+
+/* PROJECTS */
+#projects { background: rgb(252 234 238); }
+.projects-inner { max-width: 1100px; margin: 0 auto; padding: 7rem 4rem; }
+.section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3.5rem; }
+.section-heading { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; color: var(--text); }
+.section-heading em { color: var(--green-dark); }
+.section-line { flex: 1; height: 1px; background: var(--pink-mid); }
+
+.grid { display: grid; grid-template-columns: 2fr 2fr 1fr; gap: 1.5rem; }
+.pin {
+  background: var(--white); border: 1px solid rgba(234,154,178,0.35);
+  overflow: hidden; transition: transform 0.22s, box-shadow 0.22s;
+  cursor: pointer; display: flex; flex-direction: column;
+}
+.pin:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(51,115,87,0.1); }
+.span-left  { grid-column: 1 / 3; }
+.span-right { grid-column: 2 / 4; }
+.spacer { background: transparent; }
+
+.pin-img {
+  width: 100%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.8rem; position: relative; overflow: hidden;
+}
+.pin-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.h-tall { height: 220px; }
+.h-mid  { height: 170px; }
+
+.bg-fanpass  { background: linear-gradient(135deg, #FFDBE5 0%, #EA9AB2 100%); }
+.bg-mise     { background: linear-gradient(135deg, #ddf0e1 0%, #a8d4ae 100%); }
+.bg-shell    { background: #1c2320; }
+.bg-game     { background: linear-gradient(135deg, #d8e9f5 0%, #a9c8e4 100%); }
+.bg-rythmeet { background: linear-gradient(135deg, #FFDBE5 0%, #c4dfc8 100%); }
+
+.shell-code {
+  font-family: monospace; font-size: 0.72rem; color: #6D9F71;
+  line-height: 1.8; text-align: left; white-space: pre; padding: 1.2rem 1.5rem;
+}
+
+.pin-body { padding: 1.1rem 1.25rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+.pin-tag { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: var(--green-dark); border-bottom: 1.5px solid var(--green-mid); display: inline-block; padding-bottom: 0.1rem; margin-bottom: 0.55rem; }
+.pin-title {text-transform: uppercase; font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--text); margin-bottom: 0.4rem; line-height: 1.2; }
+.pin-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; flex: 1; margin-bottom: 0.85rem; }
+.pin-stack { font-size: 0.65rem; color: var(--green-mid); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.85rem; }
+.pin-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+.pin-btn {
+  font-size: 0.65rem; font-family: var(--sans); font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.38rem 0.8rem; text-decoration: none; transition: all 0.18s;
+  border: 1px solid; display: inline-block;
+}
+.btn-design { background: var(--pink-light); color: var(--green-dark); border-color: var(--pink-mid); }
+.btn-design:hover { background: var(--pink-mid); color: var(--white); }
+.btn-code   { background: transparent; color: var(--green-dark); border-color: var(--green-mid); }
+.btn-code:hover { background: var(--green-dark); color: var(--white); }
+.btn-demo   { background: var(--green-dark); color: var(--white); border-color: var(--green-dark); }
+.btn-demo:hover { background: var(--green-mid); border-color: var(--green-mid); }
+
+/* EXPERIENCE */
+#experience { background: var(--white); border-top: 1px solid var(--pink-light); }
+.exp-inner { max-width: 1100px; margin: 0 auto; padding: 7rem 4rem; }
+.exp-rows { margin-top: 3rem; }
+.exp-row {
+  display: grid; grid-template-columns: 150px 1fr 1.1fr;
+  gap: 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--pink-light); align-items: start;
+}
+.exp-row:first-child { border-top: 1px solid var(--pink-light); }
+.exp-date { font-size: 0.73rem; color: var(--text-muted); letter-spacing: 0.06em; padding-top: 0.2rem; font-weight: 300; line-height: 1.6; }
+.exp-role { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; color: var(--text); margin-bottom: 0.2rem; }
+.exp-company { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green-mid); font-weight: 500; }
+.exp-detail { font-size: 0.83rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; }
+
+/* CONTACT */
+#contact { background: var(--green-dark); }
+.contact-inner {
+  max-width: 1100px; margin: 0 auto; padding: 7rem 4rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+}
+.contact-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 1rem; }
+.contact-heading { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: var(--white); line-height: 1.1; }
+.contact-heading em { color: var(--pink-light); }
+.contact-note { font-size: 0.83rem; color: rgba(255,219,229,0.55); font-weight: 300; line-height: 1.8; margin-top: 1.5rem; }
+.contact-right { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item-label { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.25rem; }
+.contact-item-val { font-family: var(--serif); font-size: 1.25rem; font-weight: 300; color: var(--white); text-decoration: none; display: block; transition: color 0.2s; }
+.contact-item-val:hover { color: var(--pink-light); }
+.contact-divider { height: 1px; background: rgba(109,159,113,0.25); }
+
+footer {
+  text-align: center; padding: 1.4rem 4rem;
+  font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.1em;
+  text-transform: uppercase; background: var(--white);
+  border-top: 1px solid var(--pink-light);
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.hero-left > * { animation: fadeUp 0.65s ease both; }
+.hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Elsie Thomas</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">UX Design · Frontend · ML</p>
+    <h1 class="hero-name">Elsie<br/><em>Thomas</em></h1>
+    <p class="hero-tagline">CS student building full-stack products at the intersection of design, music, and machine learning.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-fill">View work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-inner">
+    <div>
+      <p class="about-label">About</p>
+      <img class="myimg" src="images/photo.jpg" alt="Girl in a jacket">
+    </div>
+    <div>
+      <h2 class="about-heading">Design-driven<br/><em>developer</em></h2>
+      <p class="about-text">I'm a Computer Science major with a Game Design minor at UW–Madison, currently studying abroad at DIS Copenhagen with a focus on artificial neural networks. I love building products that feel as good as they look.</p>
+      <p class="about-text">When I'm not coding, I host a weekly show on WSUM radio, review concerts, and take weekend trains across Europe.</p>
+      <div class="skills-section">
+        <p class="skills-cat-label">UX / Design</p>
+        <div class="skills-row">
+          <span class="skill-chip">Figma</span><span class="skill-chip">Wireframing</span><span class="skill-chip">Prototyping</span><span class="skill-chip">User flows</span>
+        </div>
+        <p class="skills-cat-label">Frontend</p>
+        <div class="skills-row">
+          <span class="skill-chip">React</span><span class="skill-chip">Node.js</span><span class="skill-chip">Firebase</span><span class="skill-chip">HTML / CSS</span><span class="skill-chip">JavaScript</span>
+        </div>
+        <p class="skills-cat-label">Languages</p>
+        <div class="skills-row">
+          <span class="skill-chip">Python</span><span class="skill-chip">Java</span><span class="skill-chip">C / C++</span>
+        </div>
+        <p class="skills-cat-label">ML / AI</p>
+        <div class="skills-row">
+          <span class="skill-chip">TensorFlow</span><span class="skill-chip">Keras</span><span class="skill-chip">Neural networks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects">
+  <div class="projects-inner">
+    <div class="section-header">
+            <div class="section-line"></div>
+      <p class="about-label">Selected Work</p>
+    </div>
+    <div class="grid">
+
+      <!-- Rythmeet -->
+      <div class="pin span-right">
+        <img src="images/rythmeet.jpg" class="pin-img h-tall" style="object-fit:cover;"> 
+        <div class="pin-body">
+          <span class="pin-tag">UX Design · Internship</span>
+          <h3 class="pin-title">Rythmeet</h3>
+          <p class="pin-desc">Dashboard and profile wireframes for artist discoverability and booking. Optimized onboarding and proposed a structured skill-ranking system.</p>
+          <p class="pin-stack">Figma · Wireframing · Prototyping</p>
+          <div class="pin-actions">
+            <a href="https://www.figma.com/proto/I1use2r69QVmiA7CfzcDPL/Rythmeet-Booking-Pages-Mockups?node-id=1202-1026&p=f&t=ea88wEGTxH2rai6X-0&scaling=min-zoom&content-scaling=fixed&page-id=1202%3A1025&starting-point-node-id=1202%3A1026" class="pin-btn btn-design">UI Design ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+      <!-- FanPass -->
+      <div class="pin span-left">
+        <!-- TO ADD IMAGE: replace the div below with <img src="your-fanpass-screenshot.png" class="pin-img h-tall" style="object-fit:cover;"> -->
+        <img src="images/fanpass.png" class="pin-img h-tall" style="object-fit:cover;"> 
+        <div class="pin-body">
+          <span class="pin-tag">Full-stack · UX Design</span>
+          <h3 class="pin-title">FanPass</h3>
+          <p class="pin-desc">A ticket resale platform that verifies real fans via Spotify listening history — reducing bots, rewarding genuine supporters.</p>
+          <p class="pin-stack">React · Node.js · Firebase · Spotify API</p>
+          <div class="pin-actions">
+            <a href="https://www.figma.com/proto/ExOtOwQ7ToYf6sNB8Thn39/FanPass?node-id=1-777&t=0x7oqWpudtEG5yaz-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A777" class="pin-btn btn-design">UI Design ↗</a>
+            <a href="https://cs571-f25.github.io/p108/" class="pin-btn btn-demo">Demo ↗</a>
+            <a href="https://github.com/elsieeva/FanPass" class="pin-btn btn-code">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+            <!-- Run Buddy -->
+      <div class="spacer"></div>
+      <div class="pin span-right">
+        <img src="images/runbuddy.jpg" class="pin-img h-tall" style="object-fit:cover;"> 
+        <div class="pin-body">
+          <span class="pin-tag">Web App</span>
+          <h3 class="pin-title">Run Buddy</h3>
+          <p class="pin-desc">A playlist calculator to get the perfect song to match your pace</p>
+          <p class="pin-stack">HTML · UX Design · Vanilla JS</p>
+          <div class="pin-actions">
+             <a href="https://www.figma.com/proto/Av5eNWYyCNzacyZ6G0xdqV/Untitled?node-id=1-5&p=f&t=ea88wEGTxH2rai6X-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" class="pin-btn btn-design">UI Design ↗</a>
+            <a href="https://elsieeva.github.io/RunBuddy/" class="pin-btn btn-demo">Demo ↗</a>
+            <a href="https://github.com/elsieeva/RunBuddy" class="pin-btn btn-code">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+      <!-- OS Shell -->
+      <div class="pin span-left">
+        <div class="pin-img bg-shell h-mid">
+          <div class="shell-code">$ ./myshell
+[1] running jobs
+$ fg 1
+$ echo hello
+hello ▮</div>
+        </div>
+        <div class="pin-body">
+          <span class="pin-tag">Systems · C</span>
+          <h3 class="pin-title">OS Shell</h3>
+          <p class="pin-desc">A Linux-style shell with command parsing, fork/exec, signal handling, job control, and I/O redirection. Debugged with GDB.</p>
+          <p class="pin-stack">C · Linux · GDB</p>
+          <div class="pin-actions">
+            <a href="https://github.com/elsieeva/OSShell" class="pin-btn btn-code">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience">
+  <div class="exp-inner">
+    <div class="section-header">
+      <p class="about-label">Experience &amp; <em>roles</em></p>
+      <div class="section-line" style="background: var(--pink-light);"></div>
+    </div>
+    <div class="exp-rows">
+      <div class="exp-row">
+        <span class="exp-date">Jan 2026 – Present</span>
+        <div>
+          <div class="exp-role">Product / UX Intern</div>
+          <div class="exp-company">Rythmeet · Remote</div>
+        </div>
+        <p class="exp-detail">Designed dashboard wireframes, optimized onboarding flows, and translated product feedback into implementable UI components for artist discoverability and booking.</p>
+      </div>
+      <div class="exp-row">
+        <span class="exp-date">Jan – May 2025</span>
+        <div>
+          <div class="exp-role">Coding Instructor</div>
+          <div class="exp-company">Introducing CS · UW–Madison</div>
+        </div>
+        <p class="exp-detail">Designed and delivered a semester-long programming curriculum for 15 students using Scratch, using gamified tools to teach algorithms, loops, and debugging.</p>
+      </div>
+      <div class="exp-row">
+        <span class="exp-date">Aug 2023 – Present</span>
+        <div>
+          <div class="exp-role">Weekly Radio Host</div>
+          <div class="exp-company">WSUM · UW–Madison</div>
+        </div>
+        <p class="exp-detail">Produced 75+ weekly radio shows and reviewed concerts and artists for the WSUM blog, building relationships with local venues.</p>
+      </div>
+      <div class="exp-row">
+        <span class="exp-date">2022 – 2025</span>
+        <div>
+          <div class="exp-role">Barista</div>
+          <div class="exp-company">Hero Coffee Bar · Chicago</div>
+        </div>
+        <p class="exp-detail">Delivered high-quality service in a fast-paced environment, increasing the tip pool by 10% during POS shifts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="contact-label">Get in touch</p>
+      <h2 class="contact-heading">Let's<br/><em>connect</em></h2>
+      <p class="contact-note">Open to internships in software engineering, UX/UI, and music-tech. Back in the US from May 2026.</p>
+    </div>
+    <div class="contact-right">
+      <div>
+        <p class="contact-item-label">Email</p>
+        <a href="mailto:eethomas4@wisc.edu" class="contact-item-val">eethomas4@wisc.edu</a>
+      </div>
+      <div class="contact-divider"></div>
+      <div>
+        <p class="contact-item-label">LinkedIn</p>
+        <a href="https://www.linkedin.com/in/elsieevathomas" target="_blank" class="contact-item-val">elsieevathomas</a>
+      </div>
+      <div class="contact-divider"></div>
+      <div>
+        <p class="contact-item-label">GitHub</p>
+        <a href="https://github.com/elsieeva" target="_blank" class="contact-item-val">elsieeva</a>
+      </div>
+      <div class="contact-divider"></div>
+      <div>
+        <p class="contact-item-label">Phone</p>
+        <a href="tel:7734311577" class="contact-item-val">773-431-1577</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Elsie Thomas · Copenhagen</footer>
+
+</body>
+</html>
