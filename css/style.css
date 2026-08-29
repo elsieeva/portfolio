@@ -177,7 +177,7 @@ p.desc{ font-size:20px; line-height:1.65; color:var(--ink-soft); }
 
 .project-photo {
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
   border-radius: 8px;
   margin: 12px 0;
   display: block;
@@ -282,6 +282,6 @@ p.desc{ font-size:20px; line-height:1.65; color:var(--ink-soft); }
 
 @media (max-width:720px){
   .stage{ grid-template-columns:1fr; }
-  .frame{ aspect-ratio:auto; }
-  .art-panel{ padding:8% 8% 2%; }
+  .frame{ aspect-ratio:auto; min-height:150vh;}
+  .art-panel{ padding:0% 8% 2%; }
 }
